@@ -1,2 +1,11 @@
 #Ignore macOS system files
 .DS_store
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
