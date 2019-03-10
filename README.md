@@ -1,2 +1,2 @@
 # Cart
-Dummy Vue.js/Vuetify Project
+Dummy Vue.js/Vuetify/Vuex Project
