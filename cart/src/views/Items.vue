@@ -34,7 +34,11 @@
                                     <small>incl. {{ item.tax }}% VAT</small>
                                 </div>
                                 <v-spacer />
-                                <v-btn dark v-on:click="addItemToCart(item.id)">
+                                <v-btn
+                                    dark
+                                    v-on:click="addItemToCart(item.id)"
+                                    :id="`addItem_${item.id}_toCart`"
+                                >
                                     <v-icon left>mdi-cart</v-icon>
                                     Add to Cart
                                 </v-btn>
