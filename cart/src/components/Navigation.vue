@@ -13,12 +13,14 @@
                 <v-list
                     v-if="this.$store.getters.cartItems.length > 0"
                     two-line
+                    id="cartItemsList"
                 >
                     <template v-for="item in this.$store.getters['cartItems']">
-                        <v-list-tile :key="item.id">
+                        <v-list-tile :key="item.id" :id="`cartItem_${item.id}`">
                             <v-list-tile-content>
                                 <v-list-tile-title
                                     style="font-weight: bolder; font-size: larger"
+                                    :id="`cartItemTitle_${item.id}`"
                                 >
                                     {{ getCartItemProperty(item.id, "name") }}
                                 </v-list-tile-title>
@@ -51,6 +53,11 @@
                                         icon
                                         small
                                         @click="decrementItemQuantity(item.id)"
+                                        :id="
+                                            `cartItem_${
+                                                item.id
+                                            }_decrement_button`
+                                        "
                                     >
                                         <v-icon
                                             v-if="
@@ -65,13 +72,20 @@
                                             >mdi-minus</v-icon
                                         >
                                     </v-btn>
-                                    <span class="px-3">{{
-                                        getItemQuantity(item.id)
-                                    }}</span>
+                                    <span
+                                        class="px-3"
+                                        :id="`cartItem_${item.id}_quantity`"
+                                        >{{ getItemQuantity(item.id) }}</span
+                                    >
                                     <v-btn
                                         icon
                                         small
                                         @click="incrementItemQuantity(item.id)"
+                                        :id="
+                                            `cartItem_${
+                                                item.id
+                                            }_increment_button`
+                                        "
                                     >
                                         <v-icon :color="'blue'"
                                             >mdi-plus</v-icon
@@ -98,10 +112,13 @@
                 >
                     <v-list-tile>
                         <v-list-tile-content>
-                            <v-list-tile-title style="font-weight: bold">
+                            <v-list-tile-title
+                                style="font-weight: bold"
+                                id="cartTotal"
+                            >
                                 Total: &euro;{{ getCartTotalAndTax()[0] }}
                             </v-list-tile-title>
-                            <v-list-tile-sub-title
+                            <v-list-tile-sub-title id="cartTaxTotal"
                                 >Total Tax: &euro;{{
                                     getCartTotalAndTax()[1]
                                 }}</v-list-tile-sub-title

@@ -6,13 +6,13 @@
                     <!--For each of the store items, display a card with an image, title, and action-->
                     <v-flex
                         v-for="item in this.$store.getters.items"
-                        :key="item.id"
+                        :key="`v-flex_${item.id}`"
                         xs12
                         sm6
                         md4
                         lg3
                     >
-                        <v-card>
+                        <v-card :key="item.id" :id="`item_${item.id}`">
                             <v-img
                                 :src="item.imgSrc"
                                 height="250px"
